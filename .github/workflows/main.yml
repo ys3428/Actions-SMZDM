@@ -2,7 +2,7 @@
 name: sync-iplcdn-scripts
 on:
   schedule:
-  #  - cron: '5 0,7,15 * * *'
+  - cron: '5 0,15 * * *'
   workflow_dispatch:
   watch:
     types: started
@@ -25,7 +25,7 @@ jobs:
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "https://github.com/iplcdn/iplcdn_repo-sync.git"
+          source_repo: "https://github.com/jazzychai/Actions-SMZDM.git"
           source_branch: "master"
           destination_branch: "main"
           github_token: ${{ secrets.PAT || github.event.client_payload.PAT }}
