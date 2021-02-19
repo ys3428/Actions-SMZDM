@@ -1,5 +1,5 @@
 # File: .github/workflows/iplcdn_repo-sync.yml
-name: sync-iplcdn-scripts
+name: sync-Actions-SMZDM
 on:
   schedule:
   - cron: '5 0,15 * * *'
@@ -7,11 +7,11 @@ on:
   watch:
     types: started
   repository_dispatch:
-    types: sync-iplcdn-scripts
+    types: sync-Actions-SMZDM
 jobs:
   repo-sync:
     env:
-      PAT: ${{ secrets.PAT || github.event.client_payload.PAT }} 
+      PAT: ${{ secrets.PAT }} 
       #此处PAT需要申请，教程详见：https://www.jianshu.com/p/bb82b3ad1d11
       #https://github.com/iplcdn/auto_repo-sync/blob/master/reposync.md
     runs-on: ubuntu-latest
@@ -28,4 +28,4 @@ jobs:
           source_repo: "https://github.com/jazzychai/Actions-SMZDM.git"
           source_branch: "master"
           destination_branch: "main"
-          github_token: ${{ secrets.PAT || github.event.client_payload.PAT }}
+          github_token: ${{ secrets.PAT }}
